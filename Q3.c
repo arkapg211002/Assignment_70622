@@ -29,7 +29,7 @@ float exponential(float x)
     while(i>=0)
     {
         t=pow(x,i)/(float)factorial(i);
-        if(t<0.0000001)
+        if((t>0 && t<0.0000000001)||(t<0 && t>-0.0000000001))
         {
             break;
         }
@@ -41,6 +41,7 @@ float sine(float n)
 {
     float s=0.0,t,x=n*22/(7*180);
     int i=0;
+    if(x==0)return 0;
     while(i>=0)
     {
         t=pow(x,2*i+1)*pow(-1.0,i)/(float)factorial(2*i+1);
@@ -48,7 +49,7 @@ float sine(float n)
         {
             break;
         }
-        if(t==0){return 1.00000;break;}
+        
         s=s+t;i++;
     }
     return s;
@@ -57,6 +58,7 @@ float cosine(float x)
 {
     float s=0.0,t,n=((22/7)*x)/180;
     int i=0,k=0;
+    if(n==0)return 1;
     while(k>=0)
     {
         t=pow(n,i)*pow(-1.0,k)/(float)factorial(i);
@@ -64,11 +66,7 @@ float cosine(float x)
         {
             break;
         }
-        if(t==0)
-        {
-            return 1.00000;
-            break;
-        }
+        
         s=s+t;k+=1;i+=2;
     }
     return s;
