@@ -29,7 +29,7 @@ float exponential(float x)
     while(i>=0)
     {
         t=pow(x,i)/(float)factorial(i);
-        if((t>0 && t<0.0000000001)||(t<0 && t>-0.0000000001))
+        if( t<0.0000000001)
         {
             break;
         }
